@@ -13,11 +13,11 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: springboot-container  # ✅ shorter, valid name
+        - name: springboot-app  # ✅ This must be fixed
           image: springboot-app
+          ports:
+            - containerPort: 8081
           resources:
             limits:
               memory: "128Mi"
               cpu: "500m"
-          ports:
-            - containerPort: 8081
