@@ -1,9 +1,9 @@
-
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myapp
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: myapp
@@ -13,11 +13,11 @@ spec:
         app: myapp
     spec:
       containers:
-        - name: 029ccf816a0f432aa5825d3bf5c8a42a0d242f6f764690db10e83589a6036f8e
+        - name: springboot-container  # ✅ shorter, valid name
           image: springboot-app
           resources:
             limits:
               memory: "128Mi"
               cpu: "500m"
           ports:
-            - containerPort: 3000
+            - containerPort: 8081
