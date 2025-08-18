@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  nut:
+    image: springboot-app
+    container_name: 029ccf816a0f432aa5825d3bf5c8a42a0d242f6f764690db10e83589a6036f8e
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
