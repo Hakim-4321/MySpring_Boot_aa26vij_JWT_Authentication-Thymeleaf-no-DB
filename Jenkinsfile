@@ -23,13 +23,13 @@ pipeline {
         bat '''
         taskkill /F /IM java.exe || echo Tomcat not running
 
-        del /Q "C:\\Program Files\\Apache\\Tomcat9\\webapps\\original.war"
-        rmdir /S /Q "C:\\Program Files\\Apache\\Tomcat9\\webapps\\original"
+        del /Q "C:\apache-tomcat-9.0.108\\webapps\\original.war"
+        rmdir /S /Q "C:\apache-tomcat-9.0.108\\webapps\\original"
 
         ren target\\MySpring_Boot_aa26vij_JWT_Authentication-Thymeleaf-no-DB-0.0.1-SNAPSHOT.war.original original.war
-        copy /Y target\\original.war "C:\\Program Files\\Apache\\Tomcat9\\webapps\\original.war"
+        copy /Y target\\original.war "C:\apache-tomcat-9.0.108\\webapps\\original.war"
 
-        start "" "C:\\Program Files\\Apache\\Tomcat9\\bin\\startup.bat"
+        start "" "C:\apache-tomcat-9.0.108\\bin\\startup.bat"
         '''
     }
 }
