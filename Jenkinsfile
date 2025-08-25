@@ -18,21 +18,24 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+    stage('Deploy') {
     steps {
         bat '''
+        set "CATALINA_HOME=C:\\apache-tomcat-9.0.108"
+
         taskkill /F /IM java.exe || echo Tomcat not running
 
-        del /Q "C:\\apache-tomcat-9.0.108\\webapps\\original.war"
-        rmdir /S /Q "C:\\apache-tomcat-9.0.108\\webapps\\original"
+        del /Q "%CATALINA_HOME%\\webapps\\original.war"
+        rmdir /S /Q "%CATALINA_HOME%\\webapps\\original"
 
         ren target\\MySpring_Boot_aa26vij_JWT_Authentication-Thymeleaf-no-DB-0.0.1-SNAPSHOT.war.original original.war
-        copy /Y target\\original.war "C:\\apache-tomcat-9.0.108\\webapps\\original.war"
+        copy /Y target\\original.war "%CATALINA_HOME%\\webapps\\original.war"
 
-        start "" "C:\\apache-tomcat-9.0.108\\bin\\startup.bat"
+        start "" "%CATALINA_HOME%\\bin\\startup.bat"
         '''
     }
 }
+
 
     }
 }
